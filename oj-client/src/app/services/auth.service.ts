@@ -17,7 +17,7 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://coj503.auth0.com/userinfo',
     redirectUri: 'http://localhost:3000/callback',
-    scope: 'openid profile email'
+    scope: 'openid profile email role app_metadata'
   });
 
   constructor(public router: Router,
@@ -34,8 +34,6 @@ export class AuthService {
           this.setSession(authResult);
           localStorage.setItem('profile', JSON.stringify(profile));
           window.location.href = localStorage.getItem('curLocation');
-          // alert("log in successfully!!");
-          // console.log(localStorage.getItem('curLocation'));
         })
       } else if (err) {
         this.router.navigate(['/home']);
@@ -103,5 +101,11 @@ export class AuthService {
     return Promise.reject(error.message || error);
   }
 
-
+  public getRoles(): Object{
+    const appData = 'https://coj503-domain.com/app_metadata';
+    return this.getProfile()[appData].authorization.roles;
+  }
 }
+
+
+
