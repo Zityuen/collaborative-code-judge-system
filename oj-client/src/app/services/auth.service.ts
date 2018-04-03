@@ -1,23 +1,27 @@
 // src/app/auth/auth.service.ts
 
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
+import {Http, Response, Headers} from "@angular/http";
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthService {
 
+  domain:string = 'coj503.auth0.com';
   auth0 = new auth0.WebAuth({
     clientID: 'K4dCDsl-DHoB3dQoJ9ndbXPDTpdOMT7D',
-    domain: 'coj503.auth0.com',
+    domain: this.domain,
     responseType: 'token id_token',
     audience: 'https://coj503.auth0.com/userinfo',
     redirectUri: 'http://localhost:3000/callback',
     scope: 'openid profile email'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router,
+              private http: Http) {}
 
   public login(): void {
     this.auth0.authorize();
@@ -72,8 +76,31 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
-  public getProfile(): Object{
+  public getProfile(){
     return JSON.parse(localStorage.getItem('profile'));
+  }
+
+
+  public resetPassword(): void {
+    let profile = this.getProfile();
+    let url: string = `https://${this.domain}/dbconnections/change_password`;
+    let headers = new Headers({'content-type': 'application/json'});
+    let body = {
+      client_id: 'K4dCDsl-DHoB3dQoJ9ndbXPDTpdOMT7D',
+      email: profile.email,
+      connection: 'Username-Password-Authentication'
+    }
+    this.http.post(url, body, headers)
+      .toPromise()
+      .then((res: Response) => {
+        console.log(res.json());
+      })
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('Error occurred', error);
+    return Promise.reject(error.message || error);
   }
 
 
