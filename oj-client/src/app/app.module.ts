@@ -15,6 +15,8 @@ import {AuthGuardService} from "./services/auth-guard.service";
 import { NewProblemComponent } from './components/new-problem/new-problem.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EditorComponent } from './components/editor/editor.component';
+import {CollaborationService} from "./services/collaboration.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ProblemDetailComponent,
     NewProblemComponent,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,11 @@ import { ProfileComponent } from './components/profile/profile.component';
     provide:"authGuard",
     useClass: AuthGuardService
   },
-    AuthGuardService],
+    AuthGuardService,
+    {
+      provide:"collaboration",
+      useClass: CollaborationService
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

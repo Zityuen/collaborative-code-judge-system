@@ -90,6 +90,8 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_new_problem_new_problem_component__ = __webpack_require__("./src/app/components/new-problem/new-problem.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_navbar_navbar_component__ = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__ = __webpack_require__("./src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_editor_editor_component__ = __webpack_require__("./src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_collaboration_service__ = __webpack_require__("./src/app/services/collaboration.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -99,6 +101,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -124,7 +128,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_7__components_problem_detail_problem_detail_component__["a" /* ProblemDetailComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__components_new_problem_new_problem_component__["a" /* NewProblemComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__components_navbar_navbar_component__["a" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__["a" /* ProfileComponent */]
+                __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_editor_editor_component__["a" /* EditorComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -143,7 +148,11 @@ var AppModule = (function () {
                     provide: "authGuard",
                     useClass: __WEBPACK_IMPORTED_MODULE_10__services_auth_guard_service__["a" /* AuthGuardService */]
                 },
-                __WEBPACK_IMPORTED_MODULE_10__services_auth_guard_service__["a" /* AuthGuardService */]],
+                __WEBPACK_IMPORTED_MODULE_10__services_auth_guard_service__["a" /* AuthGuardService */],
+                {
+                    provide: "collaboration",
+                    useClass: __WEBPACK_IMPORTED_MODULE_15__services_collaboration_service__["a" /* CollaborationService */]
+                }],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         }), 
         __metadata('design:paramtypes', [])
@@ -195,6 +204,110 @@ var routes = [
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(routes);
 //# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/app.routes.js.map
+
+/***/ }),
+
+/***/ "./src/app/components/editor/editor.component.css":
+/***/ (function(module, exports) {
+
+module.exports = "@media screen {\n  #editor {\n    height: 600px;\n  }\n  .lang-select{\n    width: 100px;\n  }\n  header .btn{\n    margin: 0 5px;\n  }\n  footer .btn{\n    margin: 0 5px;\n  }\n  .editor-footer, .editor-header{\n    margin: 10px 0;\n  }\n\n  .cursor {\n    background: rgba(0, 250, 0, 0.5);\n    z-index: 40;\n    width: 2px!important;\n  }\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/components/editor/editor.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section>\n  <header class=\"editor-header\">\n    <select class=\"form-control pull-left lang-select\" name=\"language\" [(ngModel)]=\"language\" (change)=\"setLanguage(language)\">\n      <option *ngFor=\"let language of languages\" [value]=\"language\">\n        {{language}}\n      </option>\n    </select>\n\n\n    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal\">\n      <span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>\n    </button>\n\n    <!-- Modal -->\n    <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"myModelLabel\">Reset</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            You will lose current code in the window, are you sure?\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-success\" data-dismiss=\"modal\" (click)=\"resetEditor()\">Reset</button>\n            <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Cancel</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"row\">\n    <div id=\"editor\">\n\n    </div>\n  </div>\n\n\n  <footer class=\"editor-footer\">\n    <button type=\"button\" class=\"btn btn-success pull-right\" (click)=\"submit()\">Submit Solution</button>\n  </footer>\n</section>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/components/editor/editor.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+var EditorComponent = (function () {
+    function EditorComponent(collaboration, route) {
+        this.collaboration = collaboration;
+        this.route = route;
+        this.languages = ['Java', 'C++', 'Python'];
+        this.languageModel = {
+            'Java': 'java',
+            'C++': 'c_cpp',
+            'Python': 'python'
+        };
+        this.language = 'Java';
+        this.defaultContent = {
+            'Java': "public class Example{\n      public static void main(String[] args){\n        //Type your code here\n      }\n    }",
+            'C++': "#include <iostream>\n  using namespace std;\n  int main(){\n  //Type your C++ code here\n      return 0;\n  }",
+            'Python': "class Solution:\n    def example():\n        #Write your Python code here"
+        };
+    }
+    EditorComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params
+            .subscribe(function (params) {
+            _this.sessionId = params['id'];
+            _this.initEditor();
+        });
+    };
+    EditorComponent.prototype.initEditor = function () {
+        var _this = this;
+        this.editor = ace.edit('editor');
+        this.editor.setTheme('ace/theme/eclipse');
+        this.resetEditor();
+        this.editor.$blockScrolling = Infinity;
+        document.getElementsByTagName('textarea')[0].focus();
+        this.collaboration.init(this.editor, this.sessionId);
+        this.editor.lastAppliedChange = null;
+        this.editor.on('change', function (e) {
+            console.log('editor changes: ' + JSON.stringify(e));
+            if (_this.editor.lastAppliedChange != e) {
+                _this.collaboration.change(JSON.stringify(e));
+            }
+        });
+    };
+    EditorComponent.prototype.setLanguage = function (language) {
+        this.language = language;
+        this.resetEditor();
+    };
+    EditorComponent.prototype.resetEditor = function () {
+        this.editor.getSession().setMode('ace/mode/' + this.languageModel[this.language]);
+        this.editor.setValue(this.defaultContent[this.language]);
+    };
+    EditorComponent.prototype.submit = function () {
+        var userCode = this.editor.getValue();
+        console.log(userCode);
+    };
+    EditorComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Component */])({
+            selector: 'app-editor',
+            template: __webpack_require__("./src/app/components/editor/editor.component.html"),
+            styles: [__webpack_require__("./src/app/components/editor/editor.component.css")]
+        }),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])('collaboration')), 
+        __metadata('design:paramtypes', [Object, (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === 'function' && _a) || Object])
+    ], EditorComponent);
+    return EditorComponent;
+    var _a;
+}());
+//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/editor.component.js.map
 
 /***/ }),
 
@@ -345,7 +458,7 @@ module.exports = ""
 /***/ "./src/app/components/problem-detail/problem-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" *ngIf=\"problem\">\n  <div class=\"col-xs-12 col-md-4\">\n    <div>\n      <h2>\n        {{problem.id}}.{{problem.name}}\n      </h2>\n      <p>\n        {{problem.desc}}\n      </p>\n      <br />\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container\" *ngIf=\"problem\">\n  <div class=\"col-xs-12 col-md-4\">\n    <div>\n      <h2>\n        {{problem.id}}.{{problem.name}}\n      </h2>\n      <p>\n        {{problem.desc}}\n      </p>\n      <br />\n    </div>\n  </div>\n  <div class=\"hidden-xs col-sm-12 col-md-8\">\n    <app-editor>\n\n    </app-editor>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -700,6 +813,50 @@ var AuthService = (function () {
     var _a, _b;
 }());
 //# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/auth.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/services/collaboration.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CollaborationService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CollaborationService = (function () {
+    function CollaborationService() {
+    }
+    CollaborationService.prototype.init = function (editor, sessionId) {
+        this.collaborationSocket = io(window.location.origin, { query: 'sessionId=' + sessionId });
+        this.collaborationSocket.on("change", function (delta) {
+            console.log('collaboration: editor changes by' + delta);
+            delta = JSON.parse(delta);
+            editor.lastAppliedChange = delta;
+            editor.getSession().getDocument().applyDeltas([delta]);
+        });
+        this.collaborationSocket.on("message", function (message) {
+            console.log("received: " + message);
+        });
+    };
+    CollaborationService.prototype.change = function (delta) {
+        this.collaborationSocket.emit("change", delta);
+    };
+    CollaborationService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* Injectable */])(), 
+        __metadata('design:paramtypes', [])
+    ], CollaborationService);
+    return CollaborationService;
+}());
+//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/collaboration.service.js.map
 
 /***/ }),
 
