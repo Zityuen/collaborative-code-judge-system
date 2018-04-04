@@ -37,7 +37,10 @@ export class EditorComponent implements OnInit {
         #Write your Python code here`
   };
   constructor(@Inject('collaboration') private collaboration,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+    
+  }
+
 
   ngOnInit() {
     this.route.params
