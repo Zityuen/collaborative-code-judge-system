@@ -37,7 +37,10 @@ export class EditorComponent implements OnInit {
         #Write your Python code here`
   };
   constructor(@Inject('collaboration') private collaboration,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+
+  }
+
 
   ngOnInit() {
     this.route.params
@@ -64,6 +67,15 @@ export class EditorComponent implements OnInit {
         this.collaboration.change(JSON.stringify(e));
       }
     });
+
+    this.editor.getSession().getSelection().on("changeCursor",() => {
+      let cursor = this.editor.getSession().getSelection().getCursor();
+      console.log('cursor moves: ' + JSON.stringify(cursor));
+      this.collaboration.cursorMove(JSON.stringify(cursor));
+    });
+
+    this.collaboration.restoreBuffer();
+
   }
 
   setLanguage(language: string): void{
