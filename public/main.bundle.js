@@ -92,6 +92,8 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__ = __webpack_require__("./src/app/components/profile/profile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_editor_editor_component__ = __webpack_require__("./src/app/components/editor/editor.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_collaboration_service__ = __webpack_require__("./src/app/services/collaboration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pipes_search_pipe__ = __webpack_require__("./src/app/pipes/search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_input_service__ = __webpack_require__("./src/app/services/input.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -101,6 +103,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -129,11 +133,13 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_11__components_new_problem_new_problem_component__["a" /* NewProblemComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__components_navbar_navbar_component__["a" /* NavbarComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_editor_editor_component__["a" /* EditorComponent */]
+                __WEBPACK_IMPORTED_MODULE_14__components_editor_editor_component__["a" /* EditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__pipes_search_pipe__["a" /* SearchPipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_4__app_routes__["a" /* routing */]
             ],
@@ -152,6 +158,10 @@ var AppModule = (function () {
                 {
                     provide: "collaboration",
                     useClass: __WEBPACK_IMPORTED_MODULE_15__services_collaboration_service__["a" /* CollaborationService */]
+                },
+                {
+                    provide: "input",
+                    useClass: __WEBPACK_IMPORTED_MODULE_17__services_input_service__["a" /* InputService */]
                 }],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         }), 
@@ -327,7 +337,7 @@ module.exports = ""
 /***/ "./src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <!-- Brand and toggle get grouped for better mobile display -->\n      <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n          <span class=\"sr-only\">Toggle navigation</span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n      </div>\n\n      <!-- Collect the nav links, forms, and other content for toggling -->\n      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n        <form class=\"navbar-form navbar-left\">\n          <div class=\"form-group\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search Problem\">\n          </div>\n        </form>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <form class=\"navbar-form\" >\n            <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"login()\">Sign in</button>\n            </form>\n          </li>\n          <li class=\"dropdown\" *ngIf=\"auth.isAuthenticated()\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">{{username}}<span class=\"caret\"></span></a>\n            <ul class=\"dropdown-menu\">\n              <li><a routerLink=\"/profile\">My Profile</a></li>\n              <li><a href=\"#\">My Favorites</a></li>\n              <li><a href=\"#\">My Submissions</a></li>\n              <li role=\"separator\" class=\"divider\"></li>\n              <li><a href=\"#\" (click)=\"logout()\">Log out</a></li>\n            </ul>\n          </li>\n        </ul>\n      </div><!-- /.navbar-collapse -->\n    </div><!-- /.container-fluid -->\n  </nav>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <!-- Brand and toggle get grouped for better mobile display -->\n      <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n          <span class=\"sr-only\">Toggle navigation</span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n      </div>\n\n      <!-- Collect the nav links, forms, and other content for toggling -->\n      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n        <form class=\"navbar-form navbar-left\" (ngSubmit)=\"searchProblem()\">\n          <div class=\"form-group\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search Problem\" [formControl]=\"searchBox\">\n          </div>\n        </form>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <form class=\"navbar-form\" >\n            <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"login()\">Sign in</button>\n            </form>\n          </li>\n          <li class=\"dropdown\" *ngIf=\"auth.isAuthenticated()\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">{{username}}<span class=\"caret\"></span></a>\n            <ul class=\"dropdown-menu\">\n              <li><a routerLink=\"/profile\">My Profile</a></li>\n              <li><a href=\"#\">My Favorites</a></li>\n              <li><a href=\"#\">My Submissions</a></li>\n              <li role=\"separator\" class=\"divider\"></li>\n              <li><a href=\"#\" (click)=\"logout()\">Log out</a></li>\n            </ul>\n          </li>\n        </ul>\n      </div><!-- /.navbar-collapse -->\n    </div><!-- /.container-fluid -->\n  </nav>\n</div>\n"
 
 /***/ }),
 
@@ -337,6 +347,9 @@ module.exports = "<div class=\"container\">\n  <nav class=\"navbar navbar-defaul
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/debounceTime.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -350,16 +363,32 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 
+
+
+
 var NavbarComponent = (function () {
-    function NavbarComponent(auth) {
+    function NavbarComponent(auth, input, router) {
         this.auth = auth;
+        this.input = input;
+        this.router = router;
         this.title = "COJ";
         this.username = "";
+        this.searchBox = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
     }
     NavbarComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (this.auth.isAuthenticated()) {
             this.username = this.auth.getProfile().nickname;
         }
+        this.subscription = this.searchBox.valueChanges.debounceTime(300).subscribe(function (term) {
+            _this.input.changeInput(term);
+        });
+    };
+    NavbarComponent.prototype.ngOnDestory = function () {
+        this.subscription.unsubscribe();
+    };
+    NavbarComponent.prototype.searchProblem = function () {
+        this.router.navigate(['/problems']);
     };
     NavbarComponent.prototype.login = function () {
         localStorage.setItem('curLocation', window.location.href);
@@ -376,10 +405,12 @@ var NavbarComponent = (function () {
             template: __webpack_require__("./src/app/components/navbar/navbar.component.html"),
             styles: [__webpack_require__("./src/app/components/navbar/navbar.component.css")]
         }),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])('auth')), 
-        __metadata('design:paramtypes', [Object])
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])('auth')),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])('input')), 
+        __metadata('design:paramtypes', [Object, Object, (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === 'function' && _a) || Object])
     ], NavbarComponent);
     return NavbarComponent;
+    var _a;
 }());
 //# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/navbar.component.js.map
 
@@ -527,7 +558,7 @@ module.exports = ".difficulty {\n  min-width: 65px;\n  margin-right: 10px;\n}\n\
 /***/ "./src/app/components/problem-list/problem-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <app-new-problem></app-new-problem>\n  <div class=\"list-group\">\n  <a class=\"list-group-item\" *ngFor=\"let problem of problems\" [routerLink]=\"['/problems', problem.id]\">\n    <span class=\"{{'pull-left label difficulty diff-' + problem.difficulty.toLocaleLowerCase()}}\">{{problem.difficulty.toLocaleLowerCase()}}</span>\n    <strong class=\"titler\">{{problem.id}}.{{problem.name}}</strong>\n  </a>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <app-new-problem></app-new-problem>\n  <div class=\"list-group\">\n  <a class=\"list-group-item\" *ngFor=\"let problem of problems | search: searchTerm\" [routerLink]=\"['/problems', problem.id]\">\n    <span class=\"{{'pull-left label difficulty diff-' + problem.difficulty.toLocaleLowerCase()}}\">{{problem.difficulty | uppercase}}</span>\n    <strong class=\"titler\">{{problem.id}}.{{problem.name}}</strong>\n  </a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -551,16 +582,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 
 var ProblemListComponent = (function () {
-    function ProblemListComponent(data) {
+    function ProblemListComponent(data, input) {
         this.data = data;
+        this.input = input;
         this.problems = [];
+        this.searchTerm = '';
     }
     ProblemListComponent.prototype.ngOnInit = function () {
         this.getProblems();
+        this.getSearchTerm();
     };
     ProblemListComponent.prototype.getProblems = function () {
         var _this = this;
         this.subscriptionProblems = this.data.getProblems().subscribe(function (problems) { return _this.problems = problems; });
+    };
+    ProblemListComponent.prototype.getSearchTerm = function () {
+        var _this = this;
+        this.subscriptionInput = this.input.getInput().subscribe(function (inputTerm) {
+            _this.searchTerm = inputTerm;
+        });
     };
     ProblemListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Component */])({
@@ -568,8 +608,9 @@ var ProblemListComponent = (function () {
             template: __webpack_require__("./src/app/components/problem-list/problem-list.component.html"),
             styles: [__webpack_require__("./src/app/components/problem-list/problem-list.component.css")]
         }),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])("data")), 
-        __metadata('design:paramtypes', [Object])
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])("data")),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])('input')), 
+        __metadata('design:paramtypes', [Object, Object])
     ], ProblemListComponent);
     return ProblemListComponent;
 }());
@@ -636,6 +677,40 @@ var ProfileComponent = (function () {
     return ProfileComponent;
 }());
 //# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/profile.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/pipes/search.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SearchPipe = (function () {
+    function SearchPipe() {
+    }
+    SearchPipe.prototype.transform = function (problems, term) {
+        return problems.filter(function (problem) { return problem.name.toLowerCase().includes(term); });
+    };
+    SearchPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* Pipe */])({
+            name: 'search'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], SearchPipe);
+    return SearchPipe;
+}());
+//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/search.pipe.js.map
 
 /***/ }),
 
@@ -970,6 +1045,44 @@ var DataService = (function () {
     var _a;
 }());
 //# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/data.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/services/input.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InputService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__ = __webpack_require__("./node_modules/rxjs/_esm5/BehaviorSubject.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var InputService = (function () {
+    function InputService() {
+        this.inputSubject$ = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["a" /* BehaviorSubject */]('');
+    }
+    InputService.prototype.changeInput = function (term) {
+        this.inputSubject$.next(term);
+    };
+    InputService.prototype.getInput = function () {
+        return this.inputSubject$.asObservable();
+    };
+    InputService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* Injectable */])(), 
+        __metadata('design:paramtypes', [])
+    ], InputService);
+    return InputService;
+}());
+//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/input.service.js.map
 
 /***/ }),
 
