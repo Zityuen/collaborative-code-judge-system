@@ -1,0 +1,960 @@
+Listening on port 3000
+session terminated previsouly: pulling back from Redis
+session terminated previsouly: pulling back from Redis
+last participants left. Storing in Redis
+OK
+creating new seesion
+restoring buffer for seesion: 2, socket: AJAUVZU-s-gc3bw3AAAC
+cursor 2 {"row":2,"column":29}
+change 2 {"start":{"row":2,"column":29},"end":{"row":3,"column":0},"action":"insert","lines":["",""],"id":2}
+cursor 2 {"row":3,"column":0}
+change 2 {"start":{"row":3,"column":0},"end":{"row":3,"column":8},"action":"insert","lines":["        "]}
+cursor 2 {"row":3,"column":8}
+change 2 {"start":{"row":3,"column":8},"end":{"row":3,"column":9},"action":"insert","lines":["S"]}
+cursor 2 {"row":3,"column":9}
+change 2 {"start":{"row":3,"column":9},"end":{"row":3,"column":10},"action":"insert","lines":["y"]}
+cursor 2 {"row":3,"column":10}
+change 2 {"start":{"row":3,"column":10},"end":{"row":3,"column":11},"action":"insert","lines":["s"]}
+cursor 2 {"row":3,"column":11}
+change 2 {"start":{"row":3,"column":11},"end":{"row":3,"column":12},"action":"insert","lines":["t"]}
+cursor 2 {"row":3,"column":12}
+change 2 {"start":{"row":3,"column":12},"end":{"row":3,"column":13},"action":"insert","lines":["e"]}
+cursor 2 {"row":3,"column":13}
+change 2 {"start":{"row":3,"column":13},"end":{"row":3,"column":14},"action":"insert","lines":["m"]}
+cursor 2 {"row":3,"column":14}
+change 2 {"start":{"row":3,"column":14},"end":{"row":3,"column":15},"action":"insert","lines":["."]}
+cursor 2 {"row":3,"column":15}
+change 2 {"start":{"row":3,"column":15},"end":{"row":3,"column":16},"action":"insert","lines":["o"],"id":3}
+cursor 2 {"row":3,"column":16}
+change 2 {"start":{"row":3,"column":16},"end":{"row":3,"column":17},"action":"insert","lines":["u"]}
+cursor 2 {"row":3,"column":17}
+change 2 {"start":{"row":3,"column":17},"end":{"row":3,"column":18},"action":"insert","lines":["t"]}
+cursor 2 {"row":3,"column":18}
+change 2 {"start":{"row":3,"column":18},"end":{"row":3,"column":19},"action":"insert","lines":["."]}
+cursor 2 {"row":3,"column":19}
+change 2 {"start":{"row":3,"column":19},"end":{"row":3,"column":20},"action":"insert","lines":["p"]}
+cursor 2 {"row":3,"column":20}
+change 2 {"start":{"row":3,"column":20},"end":{"row":3,"column":21},"action":"insert","lines":["r"]}
+cursor 2 {"row":3,"column":21}
+change 2 {"start":{"row":3,"column":21},"end":{"row":3,"column":22},"action":"insert","lines":["i"]}
+cursor 2 {"row":3,"column":22}
+change 2 {"start":{"row":3,"column":22},"end":{"row":3,"column":23},"action":"insert","lines":["n"]}
+cursor 2 {"row":3,"column":23}
+change 2 {"start":{"row":3,"column":23},"end":{"row":3,"column":24},"action":"insert","lines":["l"]}
+cursor 2 {"row":3,"column":24}
+cursor 2 {"row":3,"column":23}
+change 2 {"start":{"row":3,"column":23},"end":{"row":3,"column":24},"action":"remove","lines":["l"],"id":4}
+change 2 {"start":{"row":3,"column":23},"end":{"row":3,"column":24},"action":"insert","lines":["t"],"id":5}
+cursor 2 {"row":3,"column":24}
+change 2 {"start":{"row":3,"column":24},"end":{"row":3,"column":25},"action":"insert","lines":["l"]}
+cursor 2 {"row":3,"column":25}
+change 2 {"start":{"row":3,"column":25},"end":{"row":3,"column":26},"action":"insert","lines":["n"]}
+cursor 2 {"row":3,"column":26}
+change 2 {"start":{"row":3,"column":26},"end":{"row":3,"column":28},"action":"insert","lines":["()"],"id":6}
+cursor 2 {"row":3,"column":28}
+cursor 2 {"row":3,"column":27}
+change 2 {"start":{"row":3,"column":27},"end":{"row":3,"column":29},"action":"insert","lines":["\"\""],"id":7}
+cursor 2 {"row":3,"column":29}
+cursor 2 {"row":3,"column":28}
+change 2 {"start":{"row":3,"column":28},"end":{"row":3,"column":29},"action":"insert","lines":["1"],"id":8}
+cursor 2 {"row":3,"column":29}
+change 2 {"start":{"row":3,"column":29},"end":{"row":3,"column":30},"action":"insert","lines":["2"]}
+cursor 2 {"row":3,"column":30}
+change 2 {"start":{"row":3,"column":30},"end":{"row":3,"column":31},"action":"insert","lines":["3"]}
+cursor 2 {"row":3,"column":31}
+cursor 2 {"row":3,"column":32}
+cursor 2 {"row":3,"column":33}
+change 2 {"start":{"row":3,"column":33},"end":{"row":3,"column":34},"action":"insert","lines":[";"],"id":9}
+cursor 2 {"row":3,"column":34}
+IncomingMessage {
+  _readableState: 
+   ReadableState {
+     objectMode: false,
+     highWaterMark: 16384,
+     buffer: BufferList { head: null, tail: null, length: 0 },
+     length: 0,
+     pipes: null,
+     pipesCount: 0,
+     flowing: true,
+     ended: true,
+     endEmitted: true,
+     reading: false,
+     sync: false,
+     needReadable: false,
+     emittedReadable: false,
+     readableListening: false,
+     resumeScheduled: false,
+     defaultEncoding: 'utf8',
+     ranOut: false,
+     awaitDrain: 0,
+     readingMore: false,
+     decoder: null,
+     encoding: null },
+  readable: false,
+  domain: null,
+  _events: {},
+  _eventsCount: 0,
+  _maxListeners: undefined,
+  socket: 
+   Socket {
+     connecting: false,
+     _hadError: false,
+     _handle: 
+      TCP {
+        reading: true,
+        owner: [Circular],
+        onread: [Function: onread],
+        onconnection: null,
+        writeQueueSize: 0,
+        _consumed: true },
+     _parent: null,
+     _host: null,
+     _readableState: 
+      ReadableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        buffer: [Object],
+        length: 0,
+        pipes: null,
+        pipesCount: 0,
+        flowing: true,
+        ended: false,
+        endEmitted: false,
+        reading: true,
+        sync: false,
+        needReadable: true,
+        emittedReadable: false,
+        readableListening: false,
+        resumeScheduled: false,
+        defaultEncoding: 'utf8',
+        ranOut: false,
+        awaitDrain: 0,
+        readingMore: false,
+        decoder: null,
+        encoding: null },
+     readable: true,
+     domain: null,
+     _events: 
+      { end: [Object],
+        finish: [Function: onSocketFinish],
+        _socketEnd: [Function: onSocketEnd],
+        drain: [Object],
+        timeout: [Function],
+        error: [Function: socketOnError],
+        close: [Object],
+        data: [Function: socketOnData],
+        resume: [Function: onSocketResume],
+        pause: [Function: onSocketPause] },
+     _eventsCount: 10,
+     _maxListeners: undefined,
+     _writableState: 
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        decodeStrings: false,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: false,
+        bufferProcessing: false,
+        onwrite: [Function],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     allowHalfOpen: true,
+     destroyed: false,
+     _bytesDispatched: 1996,
+     _sockname: null,
+     _pendingData: null,
+     _pendingEncoding: '',
+     server: 
+      Server {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 5,
+        _maxListeners: undefined,
+        _connections: 9,
+        _handle: [Object],
+        _usingSlaves: false,
+        _slaves: [],
+        _unref: false,
+        allowHalfOpen: true,
+        pauseOnConnect: false,
+        httpAllowHalfOpen: false,
+        timeout: 120000,
+        _pendingResponseData: 0,
+        _connectionKey: '4:0.0.0.0:3000' },
+     _server: 
+      Server {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 5,
+        _maxListeners: undefined,
+        _connections: 9,
+        _handle: [Object],
+        _usingSlaves: false,
+        _slaves: [],
+        _unref: false,
+        allowHalfOpen: true,
+        pauseOnConnect: false,
+        httpAllowHalfOpen: false,
+        timeout: 120000,
+        _pendingResponseData: 0,
+        _connectionKey: '4:0.0.0.0:3000' },
+     _idleTimeout: 120000,
+     _idleNext: 
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [Object],
+        _parent: null,
+        _host: null,
+        _readableState: [Object],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 10,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: true,
+        allowHalfOpen: true,
+        destroyed: false,
+        _bytesDispatched: 855,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: [Object],
+        _server: [Object],
+        _idleTimeout: 120000,
+        _idleNext: [Object],
+        _idlePrev: [Circular],
+        _idleStart: 10769,
+        parser: [Object],
+        on: [Function: socketOnWrap],
+        _paused: false,
+        read: [Function],
+        _consuming: true,
+        _httpMessage: null,
+        _peername: [Object] },
+     _idlePrev: 
+      TimersList {
+        _idleNext: [Circular],
+        _idlePrev: [Object],
+        _timer: [Object],
+        _unrefed: true,
+        msecs: 120000,
+        nextTick: false },
+     _idleStart: 20389,
+     parser: 
+      HTTPParser {
+        '0': [Function: parserOnHeaders],
+        '1': [Function: parserOnHeadersComplete],
+        '2': [Function: parserOnBody],
+        '3': [Function: parserOnMessageComplete],
+        '4': [Function: onParserExecute],
+        _headers: [],
+        _url: '',
+        _consumed: true,
+        socket: [Circular],
+        incoming: [Circular],
+        outgoing: null,
+        maxHeaderPairs: 2000,
+        onIncoming: [Function: parserOnIncoming] },
+     on: [Function: socketOnWrap],
+     _paused: false,
+     read: [Function],
+     _consuming: true,
+     _httpMessage: 
+      ServerResponse {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 1,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: false,
+        upgrading: false,
+        chunkedEncoding: false,
+        shouldKeepAlive: true,
+        useChunkedEncodingByDefault: true,
+        sendDate: true,
+        _removedHeader: {},
+        _contentLength: null,
+        _hasBody: true,
+        _trailer: '',
+        finished: false,
+        _headerSent: false,
+        socket: [Circular],
+        connection: [Circular],
+        _header: null,
+        _headers: [Object],
+        _headerNames: [Object],
+        _onPendingData: [Function: updateOutgoingData],
+        req: [Circular],
+        locals: {} } },
+  connection: 
+   Socket {
+     connecting: false,
+     _hadError: false,
+     _handle: 
+      TCP {
+        reading: true,
+        owner: [Circular],
+        onread: [Function: onread],
+        onconnection: null,
+        writeQueueSize: 0,
+        _consumed: true },
+     _parent: null,
+     _host: null,
+     _readableState: 
+      ReadableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        buffer: [Object],
+        length: 0,
+        pipes: null,
+        pipesCount: 0,
+        flowing: true,
+        ended: false,
+        endEmitted: false,
+        reading: true,
+        sync: false,
+        needReadable: true,
+        emittedReadable: false,
+        readableListening: false,
+        resumeScheduled: false,
+        defaultEncoding: 'utf8',
+        ranOut: false,
+        awaitDrain: 0,
+        readingMore: false,
+        decoder: null,
+        encoding: null },
+     readable: true,
+     domain: null,
+     _events: 
+      { end: [Object],
+        finish: [Function: onSocketFinish],
+        _socketEnd: [Function: onSocketEnd],
+        drain: [Object],
+        timeout: [Function],
+        error: [Function: socketOnError],
+        close: [Object],
+        data: [Function: socketOnData],
+        resume: [Function: onSocketResume],
+        pause: [Function: onSocketPause] },
+     _eventsCount: 10,
+     _maxListeners: undefined,
+     _writableState: 
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        decodeStrings: false,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: false,
+        bufferProcessing: false,
+        onwrite: [Function],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     allowHalfOpen: true,
+     destroyed: false,
+     _bytesDispatched: 1996,
+     _sockname: null,
+     _pendingData: null,
+     _pendingEncoding: '',
+     server: 
+      Server {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 5,
+        _maxListeners: undefined,
+        _connections: 9,
+        _handle: [Object],
+        _usingSlaves: false,
+        _slaves: [],
+        _unref: false,
+        allowHalfOpen: true,
+        pauseOnConnect: false,
+        httpAllowHalfOpen: false,
+        timeout: 120000,
+        _pendingResponseData: 0,
+        _connectionKey: '4:0.0.0.0:3000' },
+     _server: 
+      Server {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 5,
+        _maxListeners: undefined,
+        _connections: 9,
+        _handle: [Object],
+        _usingSlaves: false,
+        _slaves: [],
+        _unref: false,
+        allowHalfOpen: true,
+        pauseOnConnect: false,
+        httpAllowHalfOpen: false,
+        timeout: 120000,
+        _pendingResponseData: 0,
+        _connectionKey: '4:0.0.0.0:3000' },
+     _idleTimeout: 120000,
+     _idleNext: 
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [Object],
+        _parent: null,
+        _host: null,
+        _readableState: [Object],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 10,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: true,
+        allowHalfOpen: true,
+        destroyed: false,
+        _bytesDispatched: 855,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: [Object],
+        _server: [Object],
+        _idleTimeout: 120000,
+        _idleNext: [Object],
+        _idlePrev: [Circular],
+        _idleStart: 10769,
+        parser: [Object],
+        on: [Function: socketOnWrap],
+        _paused: false,
+        read: [Function],
+        _consuming: true,
+        _httpMessage: null,
+        _peername: [Object] },
+     _idlePrev: 
+      TimersList {
+        _idleNext: [Circular],
+        _idlePrev: [Object],
+        _timer: [Object],
+        _unrefed: true,
+        msecs: 120000,
+        nextTick: false },
+     _idleStart: 20389,
+     parser: 
+      HTTPParser {
+        '0': [Function: parserOnHeaders],
+        '1': [Function: parserOnHeadersComplete],
+        '2': [Function: parserOnBody],
+        '3': [Function: parserOnMessageComplete],
+        '4': [Function: onParserExecute],
+        _headers: [],
+        _url: '',
+        _consumed: true,
+        socket: [Circular],
+        incoming: [Circular],
+        outgoing: null,
+        maxHeaderPairs: 2000,
+        onIncoming: [Function: parserOnIncoming] },
+     on: [Function: socketOnWrap],
+     _paused: false,
+     read: [Function],
+     _consuming: true,
+     _httpMessage: 
+      ServerResponse {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 1,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: false,
+        upgrading: false,
+        chunkedEncoding: false,
+        shouldKeepAlive: true,
+        useChunkedEncodingByDefault: true,
+        sendDate: true,
+        _removedHeader: {},
+        _contentLength: null,
+        _hasBody: true,
+        _trailer: '',
+        finished: false,
+        _headerSent: false,
+        socket: [Circular],
+        connection: [Circular],
+        _header: null,
+        _headers: [Object],
+        _headerNames: [Object],
+        _onPendingData: [Function: updateOutgoingData],
+        req: [Circular],
+        locals: {} } },
+  httpVersionMajor: 1,
+  httpVersionMinor: 1,
+  httpVersion: '1.1',
+  complete: true,
+  headers: 
+   { host: 'www.zityuen.com:3000',
+     connection: 'keep-alive',
+     'content-length': '192',
+     accept: 'application/json, text/plain, */*',
+     origin: 'http://www.zityuen.com:3000',
+     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+     'content-type': 'application/json',
+     referer: 'http://www.zityuen.com:3000/problems/2',
+     'accept-encoding': 'gzip, deflate',
+     'accept-language': 'zh-CN,zh;q=0.9',
+     cookie: 'connect.sid=s%3A7nHMYc4IwTXQIyo13QaL_eZE-itmDR0r.1IaK6N2qDWucDmkpLio0kPKWTyeiWOkkgnrWFLK%2BXbQ; io=AJAUVZU-s-gc3bw3AAAC' },
+  rawHeaders: 
+   [ 'Host',
+     'www.zityuen.com:3000',
+     'Connection',
+     'keep-alive',
+     'Content-Length',
+     '192',
+     'Accept',
+     'application/json, text/plain, */*',
+     'Origin',
+     'http://www.zityuen.com:3000',
+     'User-Agent',
+     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+     'content-type',
+     'application/json',
+     'Referer',
+     'http://www.zityuen.com:3000/problems/2',
+     'Accept-Encoding',
+     'gzip, deflate',
+     'Accept-Language',
+     'zh-CN,zh;q=0.9',
+     'Cookie',
+     'connect.sid=s%3A7nHMYc4IwTXQIyo13QaL_eZE-itmDR0r.1IaK6N2qDWucDmkpLio0kPKWTyeiWOkkgnrWFLK%2BXbQ; io=AJAUVZU-s-gc3bw3AAAC' ],
+  trailers: {},
+  rawTrailers: [],
+  upgrade: false,
+  url: '/build_and_run',
+  method: 'POST',
+  statusCode: null,
+  statusMessage: null,
+  client: 
+   Socket {
+     connecting: false,
+     _hadError: false,
+     _handle: 
+      TCP {
+        reading: true,
+        owner: [Circular],
+        onread: [Function: onread],
+        onconnection: null,
+        writeQueueSize: 0,
+        _consumed: true },
+     _parent: null,
+     _host: null,
+     _readableState: 
+      ReadableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        buffer: [Object],
+        length: 0,
+        pipes: null,
+        pipesCount: 0,
+        flowing: true,
+        ended: false,
+        endEmitted: false,
+        reading: true,
+        sync: false,
+        needReadable: true,
+        emittedReadable: false,
+        readableListening: false,
+        resumeScheduled: false,
+        defaultEncoding: 'utf8',
+        ranOut: false,
+        awaitDrain: 0,
+        readingMore: false,
+        decoder: null,
+        encoding: null },
+     readable: true,
+     domain: null,
+     _events: 
+      { end: [Object],
+        finish: [Function: onSocketFinish],
+        _socketEnd: [Function: onSocketEnd],
+        drain: [Object],
+        timeout: [Function],
+        error: [Function: socketOnError],
+        close: [Object],
+        data: [Function: socketOnData],
+        resume: [Function: onSocketResume],
+        pause: [Function: onSocketPause] },
+     _eventsCount: 10,
+     _maxListeners: undefined,
+     _writableState: 
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        decodeStrings: false,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: false,
+        bufferProcessing: false,
+        onwrite: [Function],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     allowHalfOpen: true,
+     destroyed: false,
+     _bytesDispatched: 1996,
+     _sockname: null,
+     _pendingData: null,
+     _pendingEncoding: '',
+     server: 
+      Server {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 5,
+        _maxListeners: undefined,
+        _connections: 9,
+        _handle: [Object],
+        _usingSlaves: false,
+        _slaves: [],
+        _unref: false,
+        allowHalfOpen: true,
+        pauseOnConnect: false,
+        httpAllowHalfOpen: false,
+        timeout: 120000,
+        _pendingResponseData: 0,
+        _connectionKey: '4:0.0.0.0:3000' },
+     _server: 
+      Server {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 5,
+        _maxListeners: undefined,
+        _connections: 9,
+        _handle: [Object],
+        _usingSlaves: false,
+        _slaves: [],
+        _unref: false,
+        allowHalfOpen: true,
+        pauseOnConnect: false,
+        httpAllowHalfOpen: false,
+        timeout: 120000,
+        _pendingResponseData: 0,
+        _connectionKey: '4:0.0.0.0:3000' },
+     _idleTimeout: 120000,
+     _idleNext: 
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [Object],
+        _parent: null,
+        _host: null,
+        _readableState: [Object],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 10,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: true,
+        allowHalfOpen: true,
+        destroyed: false,
+        _bytesDispatched: 855,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: [Object],
+        _server: [Object],
+        _idleTimeout: 120000,
+        _idleNext: [Object],
+        _idlePrev: [Circular],
+        _idleStart: 10769,
+        parser: [Object],
+        on: [Function: socketOnWrap],
+        _paused: false,
+        read: [Function],
+        _consuming: true,
+        _httpMessage: null,
+        _peername: [Object] },
+     _idlePrev: 
+      TimersList {
+        _idleNext: [Circular],
+        _idlePrev: [Object],
+        _timer: [Object],
+        _unrefed: true,
+        msecs: 120000,
+        nextTick: false },
+     _idleStart: 20389,
+     parser: 
+      HTTPParser {
+        '0': [Function: parserOnHeaders],
+        '1': [Function: parserOnHeadersComplete],
+        '2': [Function: parserOnBody],
+        '3': [Function: parserOnMessageComplete],
+        '4': [Function: onParserExecute],
+        _headers: [],
+        _url: '',
+        _consumed: true,
+        socket: [Circular],
+        incoming: [Circular],
+        outgoing: null,
+        maxHeaderPairs: 2000,
+        onIncoming: [Function: parserOnIncoming] },
+     on: [Function: socketOnWrap],
+     _paused: false,
+     read: [Function],
+     _consuming: true,
+     _httpMessage: 
+      ServerResponse {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 1,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: false,
+        upgrading: false,
+        chunkedEncoding: false,
+        shouldKeepAlive: true,
+        useChunkedEncodingByDefault: true,
+        sendDate: true,
+        _removedHeader: {},
+        _contentLength: null,
+        _hasBody: true,
+        _trailer: '',
+        finished: false,
+        _headerSent: false,
+        socket: [Circular],
+        connection: [Circular],
+        _header: null,
+        _headers: [Object],
+        _headerNames: [Object],
+        _onPendingData: [Function: updateOutgoingData],
+        req: [Circular],
+        locals: {} } },
+  _consuming: true,
+  _dumped: false,
+  next: [Function: next],
+  baseUrl: '/api/v1',
+  originalUrl: '/api/v1/build_and_run',
+  _parsedUrl: 
+   Url {
+     protocol: null,
+     slashes: null,
+     auth: null,
+     host: null,
+     port: null,
+     hostname: null,
+     hash: null,
+     search: null,
+     query: null,
+     pathname: '/build_and_run',
+     path: '/build_and_run',
+     href: '/build_and_run',
+     _raw: '/build_and_run' },
+  params: {},
+  query: {},
+  res: 
+   ServerResponse {
+     domain: null,
+     _events: { finish: [Function: resOnFinish] },
+     _eventsCount: 1,
+     _maxListeners: undefined,
+     output: [],
+     outputEncodings: [],
+     outputCallbacks: [],
+     outputSize: 0,
+     writable: true,
+     _last: false,
+     upgrading: false,
+     chunkedEncoding: false,
+     shouldKeepAlive: true,
+     useChunkedEncodingByDefault: true,
+     sendDate: true,
+     _removedHeader: {},
+     _contentLength: null,
+     _hasBody: true,
+     _trailer: '',
+     finished: false,
+     _headerSent: false,
+     socket: 
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [Object],
+        _parent: null,
+        _host: null,
+        _readableState: [Object],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 10,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: true,
+        allowHalfOpen: true,
+        destroyed: false,
+        _bytesDispatched: 1996,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: [Object],
+        _server: [Object],
+        _idleTimeout: 120000,
+        _idleNext: [Object],
+        _idlePrev: [Object],
+        _idleStart: 20389,
+        parser: [Object],
+        on: [Function: socketOnWrap],
+        _paused: false,
+        read: [Function],
+        _consuming: true,
+        _httpMessage: [Circular] },
+     connection: 
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [Object],
+        _parent: null,
+        _host: null,
+        _readableState: [Object],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 10,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: true,
+        allowHalfOpen: true,
+        destroyed: false,
+        _bytesDispatched: 1996,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: [Object],
+        _server: [Object],
+        _idleTimeout: 120000,
+        _idleNext: [Object],
+        _idlePrev: [Object],
+        _idleStart: 20389,
+        parser: [Object],
+        on: [Function: socketOnWrap],
+        _paused: false,
+        read: [Function],
+        _consuming: true,
+        _httpMessage: [Circular] },
+     _header: null,
+     _headers: { 'x-powered-by': 'Express' },
+     _headerNames: { 'x-powered-by': 'X-Powered-By' },
+     _onPendingData: [Function: updateOutgoingData],
+     req: [Circular],
+     locals: {} },
+  route: 
+   Route {
+     path: '/build_and_run',
+     stack: [ [Object], [Object] ],
+     methods: { post: true } },
+  body: 
+   { user_code: 'public class Example{\n      public static void main(String[] args){\n        //Type your code here\n        System.out.println("123");\n      }\n    }',
+     lang: 'java' },
+  _body: true,
+  length: undefined,
+  read: [Function] }
+java;public class Example{
+      public static void main(String[] args){
+        //Type your code here
+        System.out.println("123");
+      }
+    }
+Received response from execution server: [object Object]
+Build output: OK
+            Execute output: 123
+
+last participants left. Storing in Redis
+OK
+Error: ENOENT: no such file or directory, stat '/home/ubuntu/collaborative-code-judge-system/public/index.html'
+    at Error (native)
+Error: ENOENT: no such file or directory, stat '/home/ubuntu/collaborative-code-judge-system/public/index.html'
+    at Error (native)
+creating new seesion
+restoring buffer for seesion: 7, socket: 6pWg694RACBawvKzAAAD
+last participants left. Storing in Redis
+OK
+creating new seesion
+restoring buffer for seesion: 8, socket: DAa3p9nRSkSeuWHRAAAE
+restoring buffer for seesion: 4, socket: o_J2CUswsm6leLxGAAAF
+cursor 4 {"row":5,"column":5}
+change 4 {"start":{"row":0,"column":0},"end":{"row":5,"column":5},"action":"remove","lines":["public class Example{","      public static void main(String[] args){","        //Type your code here","        System.out.println(\"123\");","      }","    }"],"id":3}
+cursor 4 {"row":0,"column":0}
+change 4 {"start":{"row":0,"column":0},"end":{"row":2,"column":36},"action":"insert","lines":["class Solution:","    def example():","        #Write your Python code here"]}
+cursor 4 {"row":2,"column":36}
+cursor 4 {"row":0,"column":0}
+cursor 4 {"row":2,"column":36}
+last participants left. Storing in Redis
+OK
+last participants left. Storing in Redis
+OK
+creating new seesion
+restoring buffer for seesion: 10, socket: VnNTfEpRRKHl2qs_AAAG
+session terminated previsouly: pulling back from Redis
+restoring buffer for seesion: 1, socket: GJw3gRpdZw8LFFusAAAH
+cursor 1 {"row":5,"column":5}
+cursor 1 {"row":4,"column":7}
+cursor 1 {"row":5,"column":5}
+session terminated previsouly: pulling back from Redis
+restoring buffer for seesion: 7, socket: 2nZVQ9DaP01shKf5AAAI
+last participants left. Storing in Redis
+last participants left. Storing in Redis
+last participants left. Storing in Redis
+OK
+OK
+OK
+session terminated previsouly: pulling back from Redis
+restoring buffer for seesion: 10, socket: yNvP11eNHOQ5T1GpAAAJ
+last participants left. Storing in Redis
+OK

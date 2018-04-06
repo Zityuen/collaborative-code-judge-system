@@ -16,7 +16,7 @@ export class AuthService {
     domain: this.domain,
     responseType: 'token id_token',
     audience: 'https://coj503.auth0.com/userinfo',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'http://52.203.90.19:3000/callback',
     scope: 'openid profile email role app_metadata'
   });
 
@@ -106,6 +106,3 @@ export class AuthService {
     return this.getProfile()[appData].authorization.roles;
   }
 }
-
-
-

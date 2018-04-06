@@ -67,7 +67,7 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/app.component.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/app.component.js.map
 
 /***/ }),
 
@@ -169,7 +169,7 @@ var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/app.module.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/app.module.js.map
 
 /***/ }),
 
@@ -213,7 +213,7 @@ var routes = [
     }
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(routes);
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/app.routes.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/app.routes.js.map
 
 /***/ }),
 
@@ -227,7 +227,7 @@ module.exports = "@media screen {\n  #editor {\n    height: 600px;\n  }\n  .lang
 /***/ "./src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section>\n  <header class=\"editor-header\">\n    <select class=\"form-control pull-left lang-select\" name=\"language\" [(ngModel)]=\"language\" (change)=\"setLanguage(language)\">\n      <option *ngFor=\"let language of languages\" [value]=\"language\">\n        {{language}}\n      </option>\n    </select>\n\n\n    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal\">\n      <span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>\n    </button>\n\n    <!-- Modal -->\n    <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"myModelLabel\">Reset</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            You will lose current code in the window, are you sure?\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-success\" data-dismiss=\"modal\" (click)=\"resetEditor()\">Reset</button>\n            <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Cancel</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"row\">\n    <div id=\"editor\">\n\n    </div>\n  </div>\n\n  <div>\n    {{output}}\n  </div>\n\n  <footer class=\"editor-footer\">\n    <button type=\"button\" class=\"btn btn-success pull-right\" (click)=\"submit()\">Submit Solution</button>\n  </footer>\n</section>\n\n"
+module.exports = "<section>\n  <header class=\"editor-header\">\n    <select class=\"form-control pull-left lang-select\" name=\"language\" [(ngModel)]=\"language\" (change)=\"setLanguage(language)\">\n      <option *ngFor=\"let language of languages\" [value]=\"language\">\n        {{language}}\n      </option>\n    </select>\n\n\n    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal\">\n      <span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>\n    </button>\n\n    <!-- Modal -->\n    <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"myModelLabel\">Reset</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            You will lose current code in the window, are you sure?\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-success\" data-dismiss=\"modal\" (click)=\"resetEditor()\">Reset</button>\n            <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Cancel</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"row\">\n    <div id=\"editor\">\n\n    </div>\n  </div>\n\n  <div >\n    <h3 class=\"display-2\">Build Info</h3>\n    <input class=\"form-control\" type=\"text\" placeholder=\"{{output.build}}\" readonly>\n    <h3 class=\"display-2\">Output</h3>\n    <input class=\"form-control\" type=\"text\" placeholder=\"{{output.run}}\" readonly>\n  </div>\n\n\n  <footer class=\"editor-footer\">\n    <button type=\"button\" class=\"btn btn-success pull-right\" (click)=\"submit()\">Submit Solution</button>\n  </footer>\n</section>\n"
 
 /***/ }),
 
@@ -317,7 +317,7 @@ var EditorComponent = (function () {
             lang: this.language.toLowerCase()
         };
         this.data.buildAndRun(data)
-            .then(function (res) { return _this.output = res.text; });
+            .then(function (res) { return _this.output = res; });
         // console.log(userCode);
     };
     EditorComponent = __decorate([
@@ -333,7 +333,7 @@ var EditorComponent = (function () {
     return EditorComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/editor.component.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/editor.component.js.map
 
 /***/ }),
 
@@ -347,7 +347,7 @@ module.exports = ""
 /***/ "./src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <!-- Brand and toggle get grouped for better mobile display -->\n      <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n          <span class=\"sr-only\">Toggle navigation</span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n      </div>\n\n      <!-- Collect the nav links, forms, and other content for toggling -->\n      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n        <form class=\"navbar-form navbar-left\" (ngSubmit)=\"searchProblem()\">\n          <div class=\"form-group\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search Problem\" [formControl]=\"searchBox\">\n          </div>\n        </form>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <form class=\"navbar-form\" >\n            <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"login()\">Sign in</button>\n            </form>\n          </li>\n          <li class=\"dropdown\" *ngIf=\"auth.isAuthenticated()\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">{{username}}<span class=\"caret\"></span></a>\n            <ul class=\"dropdown-menu\">\n              <li><a routerLink=\"/profile\">My Profile</a></li>\n              <li><a href=\"#\">My Favorites</a></li>\n              <li><a href=\"#\">My Submissions</a></li>\n              <li role=\"separator\" class=\"divider\"></li>\n              <li><a href=\"#\" (click)=\"logout()\">Log out</a></li>\n            </ul>\n          </li>\n        </ul>\n      </div><!-- /.navbar-collapse -->\n    </div><!-- /.container-fluid -->\n  </nav>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div >\n  <input class=\"form-control\" type=\"text\" placeholder=\"Admin account: admin0@gmail.com   User account: user0@gmail.com  password: 123QWEasd\" readonly>\n </div>\n  <nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <!-- Brand and toggle get grouped for better mobile display -->\n      <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n          <span class=\"sr-only\">Toggle navigation</span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n      </div>\n\n      <!-- Collect the nav links, forms, and other content for toggling -->\n      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n        <form class=\"navbar-form navbar-left\" (ngSubmit)=\"searchProblem()\">\n          <div class=\"form-group\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search Problem\" [formControl]=\"searchBox\">\n          </div>\n        </form>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <form class=\"navbar-form\" >\n            <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"login()\">Sign in</button>\n            </form>\n          </li>\n          <li class=\"dropdown\" *ngIf=\"auth.isAuthenticated()\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">{{username}}<span class=\"caret\"></span></a>\n            <ul class=\"dropdown-menu\">\n              <li><a routerLink=\"/profile\">My Profile</a></li>\n              <li><a href=\"#\">My Favorites</a></li>\n              <li><a href=\"#\">My Submissions</a></li>\n              <li role=\"separator\" class=\"divider\"></li>\n              <li><a href=\"#\" (click)=\"logout()\">Log out</a></li>\n            </ul>\n          </li>\n        </ul>\n      </div><!-- /.navbar-collapse -->\n    </div><!-- /.container-fluid -->\n  </nav>\n\n</div>\n"
 
 /***/ }),
 
@@ -422,7 +422,7 @@ var NavbarComponent = (function () {
     return NavbarComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/navbar.component.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/navbar.component.js.map
 
 /***/ }),
 
@@ -436,7 +436,7 @@ module.exports = ""
 /***/ "./src/app/components/new-problem/new-problem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"authGuard.isAdmin()\">\n  <form #formRef=\"ngForm\">\n    <div class=\"form-group\">\n      <label for=\"problemName\">Problem Name</label>\n      <input type=\"text\" class=\"form-control\" id=\"problemName\"\n      name=\"problemName\" required placeholder=\"Enter Problem Name\" [(ngModel)]=\"newProblem.name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"problemDesc\">Problem Description</label>\n      <textarea type=\"text\" row=\"3\" class=\"form-control\" id=\"problemDesc\"\n                name=\"problemDesc\" required placeholder=\"Enter Problem Description\" [(ngModel)]=\"newProblem.desc\"></textarea>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"difficulty\">Difficulty</label>\n      <select name=\"difficulty\" id=\"difficulty\" class=\"form-control\" [(ngModel)]=\"newProblem.difficulty\">\n        <option *ngFor=\"let difficulty of difficulties\" [value]=\"difficulty\">\n          {{difficulty}}\n        </option>\n      </select>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <button type=\"submit\" class=\"btn btn-primary pull-right\" (click)=\"addProblem()\">Add Problem</button>\n      </div>\n    </div>\n  </form>\n</div>\n"
+module.exports = "<div *ngIf=\"authGuard.isAdmin()\">\n  <form #formRef=\"ngForm\">\n    <div class=\"form-group\">\n      <label for=\"problemName\">Problem Name</label>\n      <input type=\"text\" class=\"form-control\" id=\"problemName\"\n      name=\"problemName\" required placeholder=\"Enter Problem Name\" [(ngModel)]=\"newProblem.name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"problemDesc\">Problem Description</label>\n      <textarea type=\"text\" row=\"3\" class=\"form-control\" id=\"problemDesc\"\n                name=\"problemDesc\" required placeholder=\"Enter Problem Description\" [(ngModel)]=\"newProblem.desc\"></textarea>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"difficulty\">Difficulty</label>\n      <select name=\"difficulty\" id=\"difficulty\" class=\"form-control\" [(ngModel)]=\"newProblem.difficulty\">\n        <option *ngFor=\"let difficulty of difficulties\" [value]=\"difficulty\">\n          {{difficulty}}\n        </option>\n      </select>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <button type=\"submit\" class=\"btn btn-primary pull-right\" (click)=\"addProblem()\">Add Problem</button>\n      </div>\n    </div>\n  </form>\n  <hr>\n</div>\n"
 
 /***/ }),
 
@@ -491,7 +491,7 @@ var NewProblemComponent = (function () {
     ], NewProblemComponent);
     return NewProblemComponent;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/new-problem.component.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/new-problem.component.js.map
 
 /***/ }),
 
@@ -554,7 +554,7 @@ var ProblemDetailComponent = (function () {
     return ProblemDetailComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/problem-detail.component.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/problem-detail.component.js.map
 
 /***/ }),
 
@@ -624,7 +624,7 @@ var ProblemListComponent = (function () {
     ], ProblemListComponent);
     return ProblemListComponent;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/problem-list.component.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/problem-list.component.js.map
 
 /***/ }),
 
@@ -686,7 +686,7 @@ var ProfileComponent = (function () {
     ], ProfileComponent);
     return ProfileComponent;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/profile.component.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/profile.component.js.map
 
 /***/ }),
 
@@ -720,7 +720,7 @@ var SearchPipe = (function () {
     ], SearchPipe);
     return SearchPipe;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/search.pipe.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/search.pipe.js.map
 
 /***/ }),
 
@@ -776,7 +776,7 @@ var AuthGuardService = (function () {
     return AuthGuardService;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/auth-guard.service.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/auth-guard.service.js.map
 
 /***/ }),
 
@@ -817,7 +817,7 @@ var AuthService = (function () {
             domain: this.domain,
             responseType: 'token id_token',
             audience: 'https://coj503.auth0.com/userinfo',
-            redirectUri: 'http://localhost:3000/callback',
+            redirectUri: 'http://52.203.90.19:3000/callback',
             scope: 'openid profile email role app_metadata'
         });
     }
@@ -903,7 +903,7 @@ var AuthService = (function () {
     return AuthService;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/auth.service.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/auth.service.js.map
 
 /***/ }),
 
@@ -984,7 +984,7 @@ var CollaborationService = (function () {
     ], CollaborationService);
     return CollaborationService;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/collaboration.service.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/collaboration.service.js.map
 
 /***/ }),
 
@@ -1064,7 +1064,7 @@ var DataService = (function () {
     return DataService;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/data.service.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/data.service.js.map
 
 /***/ }),
 
@@ -1102,7 +1102,7 @@ var InputService = (function () {
     ], InputService);
     return InputService;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/input.service.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/input.service.js.map
 
 /***/ }),
 
@@ -1152,7 +1152,7 @@ var COLORS = [
     "#ffffff",
     "#ffff00"
 ];
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/colors.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/colors.js.map
 
 /***/ }),
 
@@ -1168,7 +1168,7 @@ var COLORS = [
 var environment = {
     production: false
 };
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/environment.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/environment.js.map
 
 /***/ }),
 
@@ -1189,7 +1189,7 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_28" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/main.js.map
+//# sourceMappingURL=/home/ubuntu/collaborative-code-judge-system/oj-client/src/main.js.map
 
 /***/ }),
 

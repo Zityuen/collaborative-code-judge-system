@@ -1,5 +1,6 @@
 import executor_utils as eu
 import json
+import os
 
 from flask import Flask
 from flask import request
@@ -28,4 +29,4 @@ def build_and_run():
 
 if __name__ == "__main__":
     eu.load_image()
-    app.run(debug = True)
+    app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT',12345)))

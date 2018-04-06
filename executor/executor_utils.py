@@ -5,7 +5,7 @@ import os
 from docker.errors import *
 
 client = docker.from_env()
-IMAGE_NAME = "zityuen/demo"
+IMAGE_NAME = "zityuen/demp"
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 TEMP_BUILD_DIR = "%s/tmp/" % CURRENT_DIR
 

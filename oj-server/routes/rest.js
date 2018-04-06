@@ -7,7 +7,7 @@ var jsonParser = bodyParser.json();
 var nodeRestClient = require('node-rest-client').Client;
 var restClient = new nodeRestClient();
 
-EXECUTOR_SERVER_URL = 'http://127.0.0.1:5000/build_and_run';
+EXECUTOR_SERVER_URL = 'http://127.0.0.1:12345/build_and_run';
 
 restClient.registerMethod('build_and_run', EXECUTOR_SERVER_URL, 'POST');
 
@@ -45,9 +45,10 @@ router.post("/build_and_run", jsonParser, function(req, res) {
         },
         (data, response) => {
         console.log("Received response from execution server: " + response);
+
         const text = `Build output: ${data['build']}
             Execute output: ${data['run']}`;
-
+            console.log(text);
         data['text'] = text;
         res.json(data);
         }

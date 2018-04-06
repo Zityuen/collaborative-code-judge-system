@@ -39,12 +39,15 @@
     </div>
   </div>
 
-  <div>
-    {{output}}
+  <div >
+    <h3 class="display-2">Build Info</h3>
+    <input class="form-control" type="text" placeholder="{{output.build}}" readonly>
+    <h3 class="display-2">Output</h3>
+    <input class="form-control" type="text" placeholder="{{output.run}}" readonly>
   </div>
+
 
   <footer class="editor-footer">
     <button type="button" class="btn btn-success pull-right" (click)="submit()">Submit Solution</button>
   </footer>
 </section>
-

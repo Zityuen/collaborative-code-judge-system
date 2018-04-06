@@ -12,7 +12,7 @@ export class EditorComponent implements OnInit {
 
   editor: any;
 
-  output: string;
+  output: any;
 
   public languages: string[] = ['Java', 'C++', 'Python'];
   languageModel = {
@@ -102,7 +102,7 @@ export class EditorComponent implements OnInit {
       lang: this.language.toLowerCase()
     };
     this.data.buildAndRun(data)
-      .then(res => this.output = res.text);
+      .then(res => this.output = res);
     // console.log(userCode);
   }
 }

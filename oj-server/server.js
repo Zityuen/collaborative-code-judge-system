@@ -29,14 +29,14 @@ app.use(function(req, res) {
 
 var server = http.createServer(app);
 io.attach(server);
-server.listen(3000);
+server.listen(3000,"0.0.0.0");
 
-server.on('error', onError);
+// server.on('error', onError);
 server.on('listening', onListening);
 
-function onError(error) {
-    throw error;
-}
+// function onError(error) {
+//     throw error;
+// }
 
 function onListening(){
     var addr = server.address();
