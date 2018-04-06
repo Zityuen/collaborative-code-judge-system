@@ -67,7 +67,7 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/app.component.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/app.component.js.map
 
 /***/ }),
 
@@ -169,7 +169,7 @@ var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/app.module.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/app.module.js.map
 
 /***/ }),
 
@@ -213,7 +213,7 @@ var routes = [
     }
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(routes);
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/app.routes.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/app.routes.js.map
 
 /***/ }),
 
@@ -227,7 +227,7 @@ module.exports = "@media screen {\n  #editor {\n    height: 600px;\n  }\n  .lang
 /***/ "./src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section>\n  <header class=\"editor-header\">\n    <select class=\"form-control pull-left lang-select\" name=\"language\" [(ngModel)]=\"language\" (change)=\"setLanguage(language)\">\n      <option *ngFor=\"let language of languages\" [value]=\"language\">\n        {{language}}\n      </option>\n    </select>\n\n\n    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal\">\n      <span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>\n    </button>\n\n    <!-- Modal -->\n    <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"myModelLabel\">Reset</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            You will lose current code in the window, are you sure?\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-success\" data-dismiss=\"modal\" (click)=\"resetEditor()\">Reset</button>\n            <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Cancel</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"row\">\n    <div id=\"editor\">\n\n    </div>\n  </div>\n\n\n  <footer class=\"editor-footer\">\n    <button type=\"button\" class=\"btn btn-success pull-right\" (click)=\"submit()\">Submit Solution</button>\n  </footer>\n</section>\n\n"
+module.exports = "<section>\n  <header class=\"editor-header\">\n    <select class=\"form-control pull-left lang-select\" name=\"language\" [(ngModel)]=\"language\" (change)=\"setLanguage(language)\">\n      <option *ngFor=\"let language of languages\" [value]=\"language\">\n        {{language}}\n      </option>\n    </select>\n\n\n    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal\">\n      <span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>\n    </button>\n\n    <!-- Modal -->\n    <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"myModelLabel\">Reset</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            You will lose current code in the window, are you sure?\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-success\" data-dismiss=\"modal\" (click)=\"resetEditor()\">Reset</button>\n            <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Cancel</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"row\">\n    <div id=\"editor\">\n\n    </div>\n  </div>\n\n  <div>\n    {{output}}\n  </div>\n\n  <footer class=\"editor-footer\">\n    <button type=\"button\" class=\"btn btn-success pull-right\" (click)=\"submit()\">Submit Solution</button>\n  </footer>\n</section>\n\n"
 
 /***/ }),
 
@@ -253,8 +253,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 var EditorComponent = (function () {
-    function EditorComponent(collaboration, route) {
+    function EditorComponent(collaboration, data, route) {
         this.collaboration = collaboration;
+        this.data = data;
         this.route = route;
         this.languages = ['Java', 'C++', 'Python'];
         this.languageModel = {
@@ -306,10 +307,18 @@ var EditorComponent = (function () {
     EditorComponent.prototype.resetEditor = function () {
         this.editor.getSession().setMode('ace/mode/' + this.languageModel[this.language]);
         this.editor.setValue(this.defaultContent[this.language]);
+        this.output = '';
     };
     EditorComponent.prototype.submit = function () {
+        var _this = this;
         var userCode = this.editor.getValue();
-        console.log(userCode);
+        var data = {
+            user_code: userCode,
+            lang: this.language.toLowerCase()
+        };
+        this.data.buildAndRun(data)
+            .then(function (res) { return _this.output = res.text; });
+        // console.log(userCode);
     };
     EditorComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Component */])({
@@ -317,13 +326,14 @@ var EditorComponent = (function () {
             template: __webpack_require__("./src/app/components/editor/editor.component.html"),
             styles: [__webpack_require__("./src/app/components/editor/editor.component.css")]
         }),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])('collaboration')), 
-        __metadata('design:paramtypes', [Object, (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === 'function' && _a) || Object])
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])('collaboration')),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Inject */])('data')), 
+        __metadata('design:paramtypes', [Object, Object, (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === 'function' && _a) || Object])
     ], EditorComponent);
     return EditorComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/editor.component.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/editor.component.js.map
 
 /***/ }),
 
@@ -412,7 +422,7 @@ var NavbarComponent = (function () {
     return NavbarComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/navbar.component.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/navbar.component.js.map
 
 /***/ }),
 
@@ -481,7 +491,7 @@ var NewProblemComponent = (function () {
     ], NewProblemComponent);
     return NewProblemComponent;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/new-problem.component.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/new-problem.component.js.map
 
 /***/ }),
 
@@ -544,7 +554,7 @@ var ProblemDetailComponent = (function () {
     return ProblemDetailComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/problem-detail.component.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/problem-detail.component.js.map
 
 /***/ }),
 
@@ -614,7 +624,7 @@ var ProblemListComponent = (function () {
     ], ProblemListComponent);
     return ProblemListComponent;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/problem-list.component.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/problem-list.component.js.map
 
 /***/ }),
 
@@ -676,7 +686,7 @@ var ProfileComponent = (function () {
     ], ProfileComponent);
     return ProfileComponent;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/profile.component.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/profile.component.js.map
 
 /***/ }),
 
@@ -710,7 +720,7 @@ var SearchPipe = (function () {
     ], SearchPipe);
     return SearchPipe;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/search.pipe.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/search.pipe.js.map
 
 /***/ }),
 
@@ -766,7 +776,7 @@ var AuthGuardService = (function () {
     return AuthGuardService;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/auth-guard.service.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/auth-guard.service.js.map
 
 /***/ }),
 
@@ -893,7 +903,7 @@ var AuthService = (function () {
     return AuthService;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/auth.service.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/auth.service.js.map
 
 /***/ }),
 
@@ -974,7 +984,7 @@ var CollaborationService = (function () {
     ], CollaborationService);
     return CollaborationService;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/collaboration.service.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/collaboration.service.js.map
 
 /***/ }),
 
@@ -1033,6 +1043,16 @@ var DataService = (function () {
         })
             .catch(this.handleError);
     };
+    DataService.prototype.buildAndRun = function (data) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'content-type': 'application/json' });
+        return this.http.post('/api/v1/build_and_run', data, headers)
+            .toPromise()
+            .then(function (res) {
+            console.log(res);
+            return res.json();
+        })
+            .catch(this.handleError);
+    };
     DataService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.body || error);
@@ -1044,7 +1064,7 @@ var DataService = (function () {
     return DataService;
     var _a;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/data.service.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/data.service.js.map
 
 /***/ }),
 
@@ -1082,7 +1102,7 @@ var InputService = (function () {
     ], InputService);
     return InputService;
 }());
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/input.service.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/input.service.js.map
 
 /***/ }),
 
@@ -1132,7 +1152,7 @@ var COLORS = [
     "#ffffff",
     "#ffff00"
 ];
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/colors.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/colors.js.map
 
 /***/ }),
 
@@ -1148,7 +1168,7 @@ var COLORS = [
 var environment = {
     production: false
 };
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/environment.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/environment.js.map
 
 /***/ }),
 
@@ -1169,7 +1189,7 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_28" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/zityuen/Projects/week3/oj-client/src/main.js.map
+//# sourceMappingURL=/home/zityuen/Projects/week4/oj-client/src/main.js.map
 
 /***/ }),
 
